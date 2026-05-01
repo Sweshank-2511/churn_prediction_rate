@@ -36,7 +36,12 @@ def predict():
             return render_template(
                 'home.html',
                 results=result,
-                probability=round(float(prob[0]), 2)
+                probability=round(float(prob[0]),2),
+                session_time= request.form.get("session_time"),
+                clicks=request.form.get("clicks"),
+                pages_visited=request.form.get("pages_visited"),
+                last_login_days=request.form.get("last_login_days"),
+                purchase_count=request.form.get("purchase_count")
             )
 
         except Exception as e:

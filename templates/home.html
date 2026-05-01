@@ -1,28 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>Prediction</title>
-</head>
-<body>
+  </head>
+  <body>
+    <h2>Enter User Details</h2>
 
-<h2>Enter User Details</h2>
+    <form action="/predict" method="post">
+      Session Time:
+      <input type="number" name="session_time" step="any" /><br /><br />
+      Clicks: <input type="number" name="clicks" step="any" /><br /><br />
+      Pages Visited:
+      <input type="number" name="pages_visited" step="any" /><br /><br />
+      Last Login Days:
+      <input type="number" name="last_login_days" step="any" /><br /><br />
+      Purchase Count:
+      <input type="number" name="purchase_count" step="any" /><br /><br />
 
-<form action="/predict" method="post">
+      <input type="submit" value="Predict" />
+    </form>
 
-    Session Time: <input type="number" name="session_time" step="any"><br><br>
-    Clicks: <input type="number" name="clicks" step="any"><br><br>
-    Pages Visited: <input type="number" name="pages_visited" step="any"><br><br>
-    Last Login Days: <input type="number" name="last_login_days" step="any"><br><br>
-    Purchase Count: <input type="number" name="purchase_count" step="any"><br><br>
-
-    <input type="submit" value="Predict">
-
-</form>
-
-{% if results %}
+    {% if results %}
     <h3>Prediction: {{ results }}</h3>
     <h4>Probability: {{ probability }}</h4>
-{% endif %}
-
-</body>
+    <h4>Entered Data:</h4>
+    <p>Session Time: {{ session_time }}</p>
+    <p>Clicks: {{ clicks }}</p>
+    <p>Pages Visited: {{ pages_visited }}</p>
+    <p>Last Login Days: {{ last_login_days }}</p>
+    <p>Purchase Count: {{ purchase_count }}</p>
+    {% endif %}
+  </body>
 </html>
